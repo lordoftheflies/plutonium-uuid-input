@@ -1,24 +1,25 @@
 {
-  "name": "seed-element",
-  "version": "1.0.6",
+  "name": "plutonium-uuid-input",
+  "version": "1.0.0",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "lordoftheflies heglas11@gmail.com>"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "Input fields for plutonium.",
   "keywords": [
     "web-component",
     "polymer",
-    "seed"
+    "uuid-input"
   ],
-  "main": "seed-element.html",
+  "main": "plutonium-uuid-input.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "homepage": "https://github.com/lordoftheflies/plutonium-uuid-input/",
   "ignore": [
     "/.*",
     "/test/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.2.0"
+    "polymer": "Polymer/polymer#^1.2.0",
+    "iron-input": "polymerelements/iron-input#~1.0.7"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
