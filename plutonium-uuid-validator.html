@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-validator-behavior/iron-validator-behavior.html">
+
+<script>
+    Polymer({
+        is: 'plutonium-uuid-validator',
+        behaviors: [
+            Polymer.IronValidatorBehavior
+        ],
+        validate: function (value) {
+            // this regex validates incomplete uuid's (by design)
+            return !value || value.match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);
+        }
+    });
+</script>

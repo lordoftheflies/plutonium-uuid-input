@@ -1,0 +1,107 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-input/iron-input.html">
+<link rel="import" href="./plutonium-uuid-validator.html">
+
+<!--
+UUID input field.
+
+Example:
+
+    <plutonium-uuid-input></plutonium-uuid-input>
+
+@demo demo/index.html
+@hero hero.svg
+-->
+<dom-module id="plutonium-uuid-input">
+    <template>
+        <style>
+            :host {
+                display: inline-block;
+            }
+            input[is="iron-input"] {
+                font: inherit;
+                outline: none;
+                box-shadow: none;
+                border: none;
+                width: auto;
+                text-align: center;
+            }
+        </style>
+        
+        <plutonium-uuid-validator></plutonium-uuid-validator>
+
+        <input is="iron-input" maxlength="8" bind-value="{{_uuid0}}" size="8" aria-label="First 8 digits of UUID">
+        -
+        <input is="iron-input" maxlength="4" bind-value="{{_uuid1}}" size="4" aria-label="Second 4 digits of UUID">
+        -
+        <input is="iron-input" maxlength="4" bind-value="{{_uuid2}}" size="4" aria-label="Third 4 digits of UUID">
+        -
+        <input is="iron-input" maxlength="4" bind-value="{{_uuid3}}" size="4" aria-label="Fourth 4 digits of UUID">
+        -
+        <input is="iron-input" maxlength="12" bind-value="{{_uuid4}}" size="12" aria-label="Last 12 digits of UUID">
+    </template>
+    <script>
+        (function () {
+            'use strict';
+
+            Polymer({
+                is: 'plutonium-uuid-input',
+                behaviors: [
+                    Polymer.IronValidatableBehavior
+                ],
+                properties: {
+                    value: {
+                        notify: true,
+                        type: String
+                    },
+                    _uuid0: {
+                        type: String
+                    },
+                    _uuid1: {
+                        type: String
+                    },
+                    _uuid2: {
+                        type: String
+                    },
+                    _uuid3: {
+                        type: String
+                    },
+                    _uuid4: {
+                        type: String
+                    },
+                    validator: {
+                        type: String,
+                        value: 'plutonium-uuid-validator'
+                    }
+                },
+                observers: [
+                    '_computeValue(_uuid0,_uuid1,_uuid2,_uuid3,_uuid4)'
+                ],
+                _computeValue: function (uuid0, uuid1, uuid2, uuid3, uuid4) {
+                    this.value = uuid0.trim() + '-' + uuid1.trim() + '-' + uuid2.trim() + '-' + uuid3.trim() + '-' + uuid4.trim();
+                },
+                attached: function () {
+                    console.log('UUID: ' + this.value);
+                    var res = this.value.split("-");
+                    this._uuid0 = res[0];
+                    this._uuid1 = res[1];
+                    this._uuid2 = res[2];
+                    this._uuid3 = res[3];
+                    this._uuid4 = res[4];
+                },
+                ready: function () {
+                }
+            });
+        })();
+    </script>
+</dom-module>

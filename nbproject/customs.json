@@ -1,0 +1,10 @@
+{
+    "elements": {
+        "plutonium-uuid-input": {}
+    },
+    "attributes": {
+        "unresolved": {
+            "context": "body"
+        }
+    }
+}
